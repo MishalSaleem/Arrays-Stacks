@@ -1,0 +1,37 @@
+org 100h
+
+.model small
+.stack 100h
+.data  
+
+MSG1 DB 'EVEN$'
+MSG2 DB 'ODD$'
+.code
+main proc 
+
+MOV AH,1
+INT 21H
+SUB AL,48
+
+TEST AL,1
+JZ EVEN
+JNZ ODD
+
+EVEN:
+MOV DX,OFFSET MSG1
+MOV AH,9
+INT 21H 
+JMP EXIT
+
+ODD:
+MOV DX,OFFSET MSG2
+MOV AH,9
+INT 21H
+
+EXIT:
+RET
+
+
+main endp
+end main
+
