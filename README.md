@@ -8,3 +8,5 @@
 **Implementing Stacks using Push and Pop**
 ![image](https://github.com/user-attachments/assets/d626a556-ea73-4e1d-a39e-16f0b299b83b)
 
+**Check whether a number is Even or Odd*
+![image](https://github.com/user-attachments/assets/a2211381-0609-4f6f-87b5-b6a28b138e7e)
