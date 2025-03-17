@@ -1,0 +1,47 @@
+org 100h
+.model small
+.stack 100h
+.data  
+
+Arr db 5 dup (?)  ; Array of 5 elements
+
+.code
+main proc 
+
+mov cx,5       ; Set loop counter to 5 
+mov si,offset Arr    
+
+L1:
+    mov ah,1   ; take user input
+    int 21h
+    sub al,48  ; Convert ASCII to decimal
+    mov [si],al ; Store in array
+    inc si
+    loop L1    ; Repeat until 5 elements entered
+
+
+mov cx,5     
+mov si,offset Arr
+mov bl,[si]   ; Assume first element is max
+inc si
+
+CMP1:
+    cmp bl,[si]  ; Compare bl with Arr[si]
+    jle SWAP     ; If bl <= Arr[si], update max
+    inc si       
+    loop CMP1    
+    jmp DISPLAY  
+
+SWAP:
+    mov bl,[si]  ; Update max if a larger value is found
+    inc si       ; Move to next element
+    loop CMP1   
+
+DISPLAY:
+    mov dl,bl
+    add dl,48
+    mov ah,2
+    int 21h
+
+main endp
+end main
